@@ -1,16 +1,24 @@
 Package: plyrangesWorkshops
-Title: What the Package Does (One Line, Title Case)
+Title: Learn plyranges for genomics
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    c(
+    person(given = "Stuart",
+           family = "Lee",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "lee.s@wehi.edu",
+           comment = c(ORCID = "0000-0003-1179-8436")),
+    person(given = "Michael",
+          family = "Lawrence",
+          role = "aut")
+    )
+Description: Tutorials and case studies for learning plyranges.
+License: Artistic-2.0
 Encoding: UTF-8
-LazyData: true
+Imports:
+    plyranges,
+    GenomicRanges,
+    HelloRangesData
 Suggests: 
     knitr,
     rmarkdown

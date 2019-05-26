@@ -1,5 +1,5 @@
 ---
-title: "Using plyranges and GenomicRanges to perform common genomic data wrangling tasks"
+title: "Fluent genomics with plyranges"
 author: "Stuart Lee and Michael Lawrence"
 date: "`r Sys.Date()`"
 output:
