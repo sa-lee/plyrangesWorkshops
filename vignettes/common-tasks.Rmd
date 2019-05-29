@@ -19,6 +19,10 @@ knitr::opts_chunk$set(
   message = FALSE
 )
 
+fig_path <- dir(system.file("inst", 
+                        "vignettes", 
+                        package = "plyrangesWorkshops"))
+
 # -- pacakges
 library(GenomicRanges)
 library(plyranges)
@@ -88,7 +92,7 @@ with an arbitrary set of additional columns, consisting of
 measurements or metadata specific to the data type or experiment.
 
 ```{r GRanges, echo = FALSE, fig.cap="An illustration of a GRanges data object for a single sample from an RNA-seq experiment. The core components of the object include a seqnames column (representing the chromosome), a ranges column which consists of start and end coordinates for a genomic region, and a strand identifier (either positive, negative, or unstranded). Metadata are included as columns to the right of the dotted line as annotations (gene-id) or range level covariates (score).", out.width="\\textwidth"}
-knitr::include_graphics("GRanges.png")
+knitr::include_graphics(file.path(fig_path, "GRanges.png"))
 ```
 
 
@@ -542,7 +546,7 @@ There are three types of overlap join: inner (A), intersect (B), and left (C)
 that are shown on the figure below.
 
 ```{r olap-fig, out.width="\\textwidth"}
-knitr::include_graphics("olaps.png")
+knitr::include_graphics(file.path(fig_path, "olaps.png"))
 ```
 
 The first type of overlap join is called `join_overlap_inner()`, we could 
