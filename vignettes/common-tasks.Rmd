@@ -28,7 +28,7 @@ library(HelloRangesData)
 # Introduction
 
 This tutorial will show you how to think about and perform common genomic data 
-wrangling tasks using the using the [plyranges]() and [GenomicRanges]() 
+wrangling tasks using the using the [plyranges](https://bioconductor.org/packages/release/bioc/html/plyranges.html) and [GenomicRanges](https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html) 
 Bioconductor packages. These packages represent genomic data using the 
 _GRanges_ data structure, which provides a powerful abstraction for working
 with measurements or annotations along genomic regions. In this tutorial
@@ -131,7 +131,7 @@ and the strand column.
 You may have also noticed that underneath each column name is the type of
 that column. The metadata columnns are of some usual base R types like 
 `character`, `numeric`, and `integer` but the core columns may be
-unfamilar. The seqnames and strand column are (factor) `Rle` columns.
+unfamiliar. The seqnames and strand column are (factor) `Rle` columns.
 `Rle` stands for run length encoding, and refers to how a column is stored.
 For now, there is no harm in thinking about these as ordinary factors.
 
@@ -147,7 +147,7 @@ playing with our GRanges object, everything will become clearer.
 
 # GRanges transformation and import
 
-Once you have obtained data from an experiement or a public repository,
+Once you have obtained data from an experiment or a public repository,
 you often want to compute summaries, create new columns, modify the
 genomic regions or just rearrange the data. Here you will learn how 
 to achieve these tasks using the plyranges:
@@ -198,7 +198,7 @@ genomic regions, like overlaps or nearest neighbours.
 ## Filter ranges with `filter()`
 
 We can `filter()` ranges based on column values being `TRUE`. This
-requries passing the ranges, along with one or more logical expressions.
+requires passing the ranges, along with one or more logical expressions.
 
 For example, we can restrict exons to those that are on the
 the X chromosome:
@@ -208,7 +208,7 @@ filter(exons, seqnames == "chrX")
 ```
 
 Multiple conditions can be composed together within a call to filter by 
-seperating the expressions with a comma. To restrict exons to those 
+separating the expressions with a comma. To restrict exons to those 
 that are on the X chromosome *AND* on the positive strand:
 
 ```{r filter-02}
@@ -271,7 +271,7 @@ Ranges object.
 mutate(cpg, total_length =  width)
 ```
 
-Multiple columns can be computed inside of a call to `mutate()` by seperating
+Multiple columns can be computed inside of a call to `mutate()` by separating
 each pair of name-value expressions with a comma, we could add an additional
 column called mid, which is the midpoint of the CpG island. 
 
@@ -355,7 +355,7 @@ cpg %>%
          is_contained = . %within% exons)
 ```
 
-### Excercises
+### Exercises
 
 1. Modify the above example so only CpG islands that are completely
 within exons are included in the result.
@@ -380,7 +380,7 @@ genes %>%
   mutate(width = width + 10L)
 ```
 
-All three components are mutally dependent, so in order to preserve the 
+All three components are mutually dependent, so in order to preserve the 
 integrity of the GRanges structure, either the start or the end positions 
 must change. In the case of adding to the width position by default 
 the start is fixed and the end is increased. But what if we would like
@@ -419,7 +419,7 @@ on either side of exon (hint: you can do this with anchoring and mutate
 or with flank).
 
 
-## Summarise annoations and measurements with `summarise()`
+## Summarise annotations and measurements with `summarise()`
 
 We can compute summarise columns GRanges object using `summarise()`. Using
 `summarise()` is very similiar to `mutate()`, we construct new columns
@@ -443,7 +443,7 @@ that are common in Bioconductor (like `Rle` mentioned above).
 ### Exercises
 
 1. What is the average length of CpG islands accross the genome?
-2. How many distinct transcript identifers are there in exons?
+2. How many distinct transcript identifiers are there in exons?
 
 
 ## Summarise over the genome with `reduce_ranges()` and `disjoin_ranges()`
@@ -475,9 +475,9 @@ Note that by default, `reduce_ranges()` and `disjoin_ranges()` will discard
 any strand information. To preserve them use `reduce_ranges_directed()` and
 `disjoin_ranges_directed()`.
 
-The `reduce_ranges()` and `disjoin_ranges()` can perform summarisation too.
+The `reduce_ranges()` and `disjoin_ranges()` can perform aggregation too.
 For example, we can reduce exons and count the number of exons
-that were merged together, and concatante the names of the exons that were 
+that were merged together, and concatenate the names of the exons that were 
 merged.
 
 ```{r reduce-03}
@@ -488,7 +488,7 @@ exons %>%
   )
 ```
 
-### Excerises
+### Exercises
 
 1. Reduce CpG islands, what is the range that has the maximum number of nearby
 features?
@@ -497,7 +497,7 @@ features?
 
 ## Analyses over groups with `group_by()`
 
-Any of the above operations can be perfomed over subsets of the
+Any of the above operations can be performed over subsets of the
 `GRanges` object with `group_by()`, this often useful if you want to
 `filter()`/`mutate()`/`summarise()`/`reduce_ranges()`/`disjoin_ranges()` 
 over annotation identifiers or chromosomes.
@@ -511,10 +511,10 @@ exons %>%
   )
 ```
 
-### Excercises
+### Exercises
 
 Let's read in another BED file that has functional annotations output by
-chromHMM from ENCODE human embrionic stem cell ChIP-seq data. 
+chromHMM from ENCODE human embryonic stem cell ChIP-seq data. 
 
 ```{r hesc}
 hesc_bed <- system.file("extdata", "hesc.chromHmm.bed", 
@@ -575,13 +575,13 @@ The type of overlap can be modified, by adding suffixes to the function call
 for example, to find overlaps that are within we could use 
 `join_overlap_inner_within()`.
 
-### Exercies
+### Exercises
 
 1. Create a new GRanges object, that has exons that are completely
 within Enhancers elements of hesc. How many exons are there?
 2. Use `join_overlap_intersect()` to filter exons if at least 50 per cent
 of their bases are overlapped by enhancer elements.
-3. Count the number of each enchancer element type that are exonic.
+3. Count the number of each enhancer element type that are exonic.
 There are several ways of doing this, but see if you can come up with a 
 solution using `join_overlap_left()` + `disjoin_ranges()`. 
 
@@ -638,15 +638,15 @@ cvg_hist_all <- cvg %>%
   )
 ```
 
-Then the results can be put togeher using `rbind()` or plotted using
-your favourite plotting pacakge. 
+Then the results can be put together using `rbind()` or plotted using
+your favourite plotting package. 
 
 ### A more complicated example
 
 Here we perform another example where we find exons with no coverage that
 overlap cpg islands. To compose a chain first we compute the coverage
 then use a filter to restrict to zero coverage ranges. Then we
-perfrom an inner overlap join to find which cpg islands overlap the exonic
+perform an inner overlap join to find which cpg islands overlap the exonic
 regions with zero coverage.
 
 ```{r}
@@ -696,4 +696,4 @@ If you have any questions about the use of these packages, please ask
 a question on [support.bioconductor.org](https://support.bioconductor.org/) 
 or post an issue on [github](https://github.com/sa-lee/plyranges).
 
-The solutions to the excercises can be found [here](solutions.html).
+The solutions to the exorcises can be found [here](solutions.html).

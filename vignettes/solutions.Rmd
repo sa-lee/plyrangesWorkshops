@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE,
 ```
 
 
-These are the solutions to the excercies found in
+These are the solutions to the exercises found in
 [Common Genomic Data Wrangling Tasks](common-tasks.html).
 
 # Data
@@ -160,7 +160,7 @@ exons %>%
   filter(width / total_length > 0.5)
 ```
 
-3. Count the number of each enchancer element type that are exonic.
+3. Count the number of each enhancer element type that are exonic.
 There are several ways of doing this, but see if you can come up with a 
 solution using `join_overlap_left()` + `disjoin_ranges()`. 
 
