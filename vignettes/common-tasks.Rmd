@@ -29,7 +29,7 @@ library(plyranges)
 library(HelloRangesData)
 ```
 
-# Introduction
+## Introduction
 
 This tutorial will show you how to think about and perform common genomic data 
 wrangling tasks using the using the [plyranges](https://bioconductor.org/packages/release/bioc/html/plyranges.html) and [GenomicRanges](https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html) 
@@ -82,7 +82,7 @@ BiocManager::install(c("GenomicRanges", "plyranges", "HelloRangesData"))
 ```
 
 
-# Introducing GRanges
+## Introducing GRanges
 
 The GRanges is a fundamental data structure used in the Bioconductor ecosystem. 
 It is very similar to the base R data.frame but with appropriate
@@ -149,7 +149,7 @@ Do not be concerned if this a bit confusing for now, once we start
 playing with our GRanges object, everything will become clearer.
 
 
-# GRanges transformation and import
+## GRanges transformation and import
 
 Once you have obtained data from an experiment or a public repository,
 you often want to compute summaries, create new columns, modify the
@@ -691,7 +691,7 @@ plot(1 - cumsum(fraction) ~ score,
 ```
 
 
-# Learning more
+## Learning more
 
 We have touched the surface of what's possible with plyranges and
 GenomicRanges. A good starting point to learn more about GenomicRanges
@@ -702,7 +702,7 @@ a question on [support.bioconductor.org](https://support.bioconductor.org/)
 or post an issue on [github](https://github.com/sa-lee/plyranges).
 
 
-# Solutions to exercises
+## Solutions to exercises
 
 We need to read in three files from HelloRangesData
 
