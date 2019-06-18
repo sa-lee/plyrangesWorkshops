@@ -16,8 +16,7 @@ defined in the plyranges package. We will cover:
 - introduction to GRanges
 - overview of the core verbs for arithmetic, restriction, and aggregation of GRanges objects
 - performing joins between GRanges objects
-- designing pipelines to quickly explore data from AnnotationHub
-- reading BAM and other file types as GRanges objects
+- using the above to perform coverage analysis
 
 The workshop will be a computer lab, in which the participants will be able to 
 ask questions and interact with the instructors.
@@ -38,22 +37,18 @@ Students will work through an Rmarkdown document while the instructors respond t
 ## _R_ / _Bioconductor_ packages used
 
 - plyranges
-- AnnotationHub
-- GenomicRanges
-- IRanges
-- S4Vectors
+- HelloRanges
 
 ## Time outline
 
 
 | Activity                     | Time |
 |------------------------------|------|
-| Overview of GRanges          | 5m   |
-| The plyranges grammar        | 20m  |
-| I/O and data pipelines       | 20m  |
+| Introduction and plan        | 10m  |
+| Basic wrangling              | 20m  |
+| Coverage analysis            | 20m  |
 
 # Workshop goals and objectives
-
 
 ## Learning goals
 
@@ -64,7 +59,6 @@ Students will work through an Rmarkdown document while the instructors respond t
 
 ## Learning objectives
 
-* Use AnnotationHub to find and summarise data
 * Read files into R as GRanges objects
 * Perform coverage analysis 
 * Build data pipelines for analysis based on GRanges
